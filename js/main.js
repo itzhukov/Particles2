@@ -9,9 +9,12 @@ document.onreadystatechange = function () {
 			particleCount = 1,
 			emitterSquare = 500;
 
-
-		canvas.width = 1200;
-		canvas.height = 600;
+		var resize = function () {
+		    canvas.width = document.documentElement.clientWidth;
+		    canvas.height = document.documentElement.clientHeight;
+		};
+		resize();
+		window.addEventListener('resize', resize);
 
 		document.body.appendChild(canvas);
 
