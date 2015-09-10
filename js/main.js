@@ -6,7 +6,8 @@ document.onreadystatechange = function () {
 			c = canvas.getContext('2d'),
 			particles = {},
 			particleId = 0;
-			particleCount = 1,
+			particleCount = 10,
+			particleRadius = 7,
 			emitterSquare = 500;
 
 		var resize = function () {
@@ -60,7 +61,6 @@ document.onreadystatechange = function () {
 			this.x += this.vx;
 			this.y += this.vy;
 
-
 			if (Math.random() < 0.1){
 				this.vx += Math.random() * 10 - 5;
 				this.vy += Math.random() * 10 - 5;
@@ -83,26 +83,31 @@ document.onreadystatechange = function () {
 			//c.fillStyle = "rgba(255, 0, 0, 0.1)";
 			//c.fillStyle = "rgba(255, 255, 255, 0.5)";
 			c.fillStyle = this.color;
-			c.fillRect(this.x, this.y, this.width, this.height);
+			//c.fillRect(this.x, this.y, this.width, this.height);
+			c.beginPath();
+			//c.fillStyle = "rgba(255, 255, 255, 1)";
+			c.arc(this.x, this.y, particleRadius, 0, Math.PI * 2, false);
+			c.fill();
 
 			//c.drawImage(img, this.x, this.y, 68, 85);
 
 
 		};
 
-
+		/*
 		// new particles
 		for (var i = 0; i < particleCount; i++){
 			new Particle();
 		}
-
+		*/
 
 		setInterval(function(){
+			//c.fillStyle = "rgba(0, 0, 0, 1)";
 			c.fillStyle = "rgba(0, 0, 0, 0.1)";
 			c.fillRect(0, 0, canvas.width, canvas.height);
 
 			for (var i = 0; i < particleCount; i++){
-				new Particle(20);
+				new Particle();
 			}
 
 			for (var i in particles){
