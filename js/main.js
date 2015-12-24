@@ -18,7 +18,7 @@ document.onreadystatechange = function () {
 		document.body.appendChild(canvas);
 
 		var img = new Image();
-		img.src = "particle.png";
+		img.src = "particle4.png";
 
 		c.fillStile = "black";
 		c.fillRect(0, 0, canvas.width, canvas.height);
