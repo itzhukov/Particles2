@@ -6,7 +6,7 @@ document.onreadystatechange = function () {
 			particles = {},
 			particleId = 0,
 			particleCount = 1,
-			emitterSquare = 800,
+			emitterSquare = 10,
 			sequence = [];
 
 		var resize = function () {
@@ -51,7 +51,7 @@ document.onreadystatechange = function () {
 			this.id = particleId;
 
 			this.life = 0;
-			this.maxLife = Math.random() * 30 + 50;
+			this.maxLife = Math.random() * 30 + 120;
 			/*
 			this.color = "rgba("+ parseInt(Math.random()*255, 10) + "," +
 				                + parseInt(Math.random()*255, 10) + "," +
