@@ -6,7 +6,8 @@ document.onreadystatechange = function () {
 			particles = {},
 			particleId = 0,
 			particleCount = 1,
-			emitterSquare = 800;
+			emitterSquare = 800,
+			sequence = [];
 
 		var resize = function () {
 			canvas.width = document.documentElement.clientWidth;
@@ -17,8 +18,11 @@ document.onreadystatechange = function () {
 
 		document.body.appendChild(canvas);
 
-		var img = new Image();
-		img.src = "particle4.png";
+		for (var i = 8; i >= 1; i--) {
+			var img = new Image();
+			img.src = "particle"+i+".png";
+			sequence.push(img);
+		};
 
 		c.fillStile = "black";
 		c.fillRect(0, 0, canvas.width, canvas.height);
@@ -32,11 +36,13 @@ document.onreadystatechange = function () {
 			this.x = (canvas.width/2 - emitterSquare/2) + (Math.random() * emitterSquare);
 			this.y = (canvas.height/2 - emitterSquare/2) + (Math.random() * emitterSquare);
 
-			this.vx = Math.random() * 3 - 3;
-			this.vy = Math.random() * 3 - 3;
+			this.vx = Math.random() * 1 - 2;
+			this.vy = Math.random() * 1 - 2;
 
 			this.width = 5;
 			this.height = 5;
+
+			this.part = Math.floor(Math.random() * 8-1) + 1;
 
 			this.gravity = 0.3;
 
@@ -52,10 +58,6 @@ document.onreadystatechange = function () {
 				                + parseInt(Math.random()*255, 10) + ", 0.5)";
 			*/
 			this.color = "rgba("+ parseInt(Math.random()*255, 10) + ", 0, 0, 0.9)";
-
-
-
-			// console.log('color:' + this.color);
 		}
 
 
@@ -88,8 +90,8 @@ document.onreadystatechange = function () {
 			//c.fillStyle = "rgba(255, 255, 255, 0.5)";
 			c.fillStyle = this.color;
 			// c.fillRect(this.x, this.y, this.width, this.height);
-
-			c.drawImage(img, this.x, this.y, 75, 75);
+			// c.drawImage(sequence[this.part], this.x, this.y, 75, 75);
+			c.drawImage(sequence[4], this.x, this.y, 75, 75);
 		};
 
 
